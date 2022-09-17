@@ -19,6 +19,9 @@ function cargarUsuarios(){
             </tr>`;
             tblUsuarios.innerHTML += tr;
         }
+        if (result.data.length == 0) {
+            tblUsuarios.innerHTML = `<tr><td colspan="5" class="text-center">No hay ususarios</td></tr>`;
+        }
 })
     .catch(error => {
         console.log("Error detectado");
@@ -44,13 +47,17 @@ function agregarUsuario() {
         limpiarFormulario();
         cargarUsuario();
     })
+
     .catch(error => {
         console.log("Error detectado");
     })
 }
 
 function limpiarFormulario(){
-
+document.getElementById("nombre").value = "";
+document.getElementById("paterno").value = "";
+document.getElementById("materno").value = "";
+document.getElementById("email").value = "";
 }
 
 cargarUsuarios();
